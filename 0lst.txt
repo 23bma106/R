@@ -1,0 +1,30 @@
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p1.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p2.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p3.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p4.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p5.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p6.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p7.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p8.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p9.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p10.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p11.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p12.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p13.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p14.txt
+
+curl https://raw.githubusercontent.com/23bma106/R/main/p15.txt
