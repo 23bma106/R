@@ -1,0 +1,25 @@
+# Function to implement Cramer's Rule
+cramers_rule = function(A, b) {
+ n = nrow(A) # Number of variables (rows in A)
+
+ det_A = det(A) # Determinant of the coefficient matrix A
+
+ if (det_A == 0) {
+ stop("The determinant of A is zero, the system has no unique solution.")
+ }
+
+ solution = numeric(n) # Vector to store the solution
+
+ # For each variable, calculate its value using Cramer's rule
+ for (i in 1:n) {
+ A_i = A # Copy of the matrix A
+ A_i[, i] = b # Replace the i-th column with the vector b
+ solution[i] = det(A_i) / det_A # Calculate the solution for the i-th variable
+ }
+
+ return(solution)
+}
+# Given Problem
+A = matrix(c(10, -5, -2, 4, -10, 3, 1, 6, 10), nrow = 3, byrow = TRUE)
+b = c(3, -3, -3)
+cramers_rule(A, b)

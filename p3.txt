@@ -1,0 +1,29 @@
+# Function for Newton-Raphson method to find the root
+newton_root = function(f, df, x0, tol = 1e-5, maxit = 20) {
+ root = x0 # Initial guess
+
+ # Iterating to calculate the root
+ for (i in 1:maxit) {
+ dx = f(root) / df(root) # Newton-Raphson step: dx = f(x) / f'(x)
+ root = root - dx # Update the root estimate
+
+ # Checking convergence
+ if (abs(dx) < tol) {
+ root = round(root, 5) # Round the root to 5 decimal places
+ print(paste("Solution of the given equation is:", root))
+ print(paste("Number of iterations:", i))
+ return(invisible(root)) # Return the root without printing it
+
+ }
+}
+
+ # If maximum iterations exceeded
+ print("Maximum number of iterations exceeded.")
+ root = round(root, 5) # Round the root before returning if no convergence
+ return(root) # Return the root
+}
+# Given problem function:
+f = function(x) x^3 - 6*x + 4
+df = function(x) 3*x^2 - 6
+# Call the newton_root function with initial guess 1
+newton_root(f, df,1)

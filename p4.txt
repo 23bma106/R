@@ -1,0 +1,34 @@
+# Function for Gauss-Seidel Iteration
+gauss_seidel = function(A, b, x0, tol = 1e-3, max_iter = 100) {
+ n = length(b) # Number of variables
+ x = x0 # Initial guess
+
+ for (iter in 1:max_iter) {
+ x_old = x # Create a copy of the current solution
+
+ for (i in 1:n) {
+ sum_Ax = 0
+ for (j in 1:n) {
+ if (i != j) {
+ sum_Ax = sum_Ax + A[i, j] * x[j]
+ }
+ }
+ # Update the solution for the current variable
+ x[i] = (b[i] - sum_Ax) / A[i, i]
+ }
+ # Check for convergence
+ if (max(abs(x - x_old)) < tol) {
+ print(paste("Gauss-Seidel method converged in", iter, "iterations"))
+ return(x)
+ }
+ }
+
+ # If max iterations reached, return the result
+ print("Gauss-Seidel method did not converge within the maximum iterations.")
+ return(x)
+}
+# Given Problem
+A = matrix(c(10, -5, -2, 4, -10, 3, 1, 6, 10), nrow = 3, byrow = TRUE)
+b = c(3, -3, -3)
+x0 = c(0, 0, 0)
+gauss_seidel(A, b, x0)
