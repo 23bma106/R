@@ -1,0 +1,40 @@
+# Function for Jacobi Iteration
+jacobi = function(A, b, x0, tol = 1e-3, max_iter = 100) {
+ n = length(b) # Number of variables
+ x = x0 # Initial guess
+ x_new = x0 # A new vector to store updated values for the next iteration
+for (iter in 1:max_iter) {
+ # Loop through all variables
+ for (i in 1:n) {
+ sum_Ax = 0
+ # Sum over all terms except for the diagonal
+ for (j in 1:n) {
+ if (i != j) {
+ sum_Ax = sum_Ax + A[i, j] * x[j] # Use the previous iteration's values
+ }
+ }
+ # Update the solution for the current variable
+ x_new[i] = (b[i] - sum_Ax) / A[i, i]
+ }
+
+ # Check for convergence by comparing the new solution with the old one
+ if (max(abs(x_new - x)) < tol) {
+ print(paste("Jacobi method converged in", iter, "iterations"))
+ return(x_new)
+ }
+
+ # Update the old solution to be the new one for the next iteration
+ x = x_new
+ }
+
+ # If max iterations are reached without convergence
+ print("Jacobi method did not converge within the maximum iterations.")
+ return(x_new)
+}
+# Given Problem
+A = matrix(c(10, -5, -2, 1, -10, 3, 1, 6, 10), nrow = 3, byrow = TRUE)
+b = c(3, -3, -3)
+x0 = c(0, 0, 0) # Initial guess
+result = jacobi(A, b, x0)
+print("Solution: ")
+print(result)

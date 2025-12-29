@@ -1,0 +1,29 @@
+# Function for Bisection method
+bisectionroot = function(f, a, b, tol=1e-5) {
+# Check whether the function has the same sign
+ if (f(a) == 0) {
+ return(a)
+ } else if (f(b) == 0) {
+ return(b)
+ } else if (f(a)*f(b) > 0) {
+ print("error: f(a) and f(b) of same sign \n")
+ return(NULL)
+ }
+# If inputs OK, converge to root
+ iter = 0
+ while (abs(b-a) > tol) {
+ c = (a+b)/2
+ if (f(c) == 0) {
+ return(c)
+ } else if (f(a)*f(c) < 0) {
+ b = c
+ } else {
+ a = c
+ }
+ iter = iter + 1
+ }
+ return(list(root=(a+b)/2, iterations=iter)) # root, iterations
+}
+# Given Problem
+f = function(x) x^3-sin(x)^2
+bisectionroot(f,0.5,1)
