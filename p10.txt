@@ -1,0 +1,42 @@
+# Define the function f(x)
+f = function(x) exp(-x) * cos(x)
+# Step size
+h = pi/100
+# Create the sequence of x values
+xs = seq(0, pi, h)
+# Evaluate the function at each x value
+ys = f(xs)
+# Define the Simpson's rule function
+simpson = function(y, h) {
+ n = length(y)
+ if (n%%2 != 1) stop("Simpson's rule needs an uneven number of points.")
+ i1 = seq(2, n-1, by=2) # Indices for the odd positions
+ i2 = seq(3, n-2, by=2) # Indices for the even positions
+ result = h/3 * (y[1] + y[n] + 4*sum(y[i1]) + 2*sum(y[i2])) # Simpson's rule formula
+ return(result)
+}
+# Apply Simpson's rule to the ys values
+integral_result = simpson(ys, h)
+# Print xs and ys values
+cat("x values (xs):\n")
+print(xs) # Prints the sequence of x values
+cat("\nFunction values (ys):\n")
+print(ys) # Prints the function values corresponding to xs
+# Print the result of the numerical integration
+cat("\n The value of the given integral(Simpson's rule): ", integral_result, "\n")
+Input :
+1. Evaluate ∫ 𝑒
+−𝑥
+𝑐𝑜𝑠𝑥 𝑑𝑥 𝜋
+0
+ by dividing the interval into 100 equal parts using
+Simpson’s 1/3 rd rule.
+2. By dividing the range into 10 equal parts, evaluate ∫ 𝑠𝑖𝑛 𝑥 𝑑𝑥
+𝜋
+2
+0
+by Simpson’s 1/3 rd
+rule.
+Output:
+1. The value of the given integral: 0.5216069
+2. The value of the given integral: 0.9998295
