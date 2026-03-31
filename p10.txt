@@ -1,0 +1,18 @@
+f = function(x) exp(-x) * cos(x)
+h = pi/100
+xs = seq(0, pi, h)
+ys = f(xs)
+simpson = function(y, h) {
+ n = length(y)
+ if (n%%2 != 1) stop("Simpson's rule needs an uneven number of points.")
+ i1 = seq(2, n-1, by=2) # Indices for the odd positions
+ i2 = seq(3, n-2, by=2) # Indices for the even positions
+ result = h/3 * (y[1] + y[n] + 4*sum(y[i1]) + 2*sum(y[i2])) # Simpson's rule formula
+ return(result)
+}
+integral_result = simpson(ys, h)
+cat("x values (xs):\n")
+print(xs) 
+cat("\nFunction values (ys):\n")
+print(ys) 
+cat("\n The value of the given integral(Simpson's rule): ", integral_result, "\n")

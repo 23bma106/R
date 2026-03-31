@@ -1,0 +1,21 @@
+f = function(x) exp(-x) * cos(x)
+h = pi/99
+xs = seq(0, pi, h)
+ys = f(xs)
+simpson38 = function(y, h) {
+ n = length(y)
+ if((n-1) %% 3 != 0)
+ stop("Number of intervals must be a multiple of 3")
+ i1 = seq(2, n-1) # interior indices
+ i2 = i1[(i1-1) %% 3 != 0] # coefficient 3 positions
+ i3 = i1[(i1-1) %% 3 == 0] # coefficient 2 positions
+ result = (3*h/8) * (y[1] + y[n] + 3*sum(y[i2]) + 2*sum(y[i3]))
+ return(result)
+}
+integral_result = simpson38(ys, h)
+# Print xs and ys
+cat("x values (xs):\n")
+print(xs)
+cat("\nFunction values (ys):\n")
+print(ys)
+cat("\nIntegral value using Simpson's 3/8 rule:", integral_result)

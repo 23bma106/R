@@ -1,0 +1,29 @@
+xn = 1971
+h = 10
+x = 1971
+y = c(40.62, 60.80, 79.95, 103.56, 132.65)
+
+cat("Given y values: \n")
+print(y)
+
+dy1 = diff(y)
+dy2 = diff(dy1)
+dy3 = diff(dy2)
+dy4 = diff(dy3)
+
+cat("\n forward difference table: \n")
+cat("y = ", y,"\n")
+cat("∇y = ", dy1,"\n")
+cat("∇2y = ", dy2,"\n")
+cat("∇3y = ", dy3,"\n")
+cat("∇4y = ", dy4,"\n")
+
+u = (x-xn)/h
+cat("\n value of u =",u , "\n")
+derivate = dy1[4]+
+  (2*u+1)/2*dy2[3]+
+  (3*u^2+6*u+2)/6*dy3[2]+
+  (4*u^3+18*u^2+22*u+6)/24*dy4[1]
+
+derivate_at_x = derivate/h
+cat("\n The derivate at x = ",x ,"is :",derivate_at_x)

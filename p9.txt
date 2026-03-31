@@ -1,0 +1,12 @@
+f = function(x) exp(-x) * cos(x)
+h = pi/100
+xs = seq(0, pi, h)
+ys = f(xs)
+ya = (ys[2] - ys[1])
+ye = (ys[101] - ys[100])
+result = trapz(xs, ys) - h/12 * (ye - ya)
+cat("x values (xs):\n")
+print(xs) # Prints the sequence of x values
+cat("\nFunction values (ys):\n")
+print(ys) # Prints the function values corresponding to xs
+cat("\nResult of the numerical integration: ", result, "\n")
